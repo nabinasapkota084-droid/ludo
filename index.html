@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2ea">
+  <title>Classic Ludo</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">FOUR PLAYERS · ONE FINISH</p>
+        <h1>Classic Ludo</h1>
+      </div>
+      <div class="turn-indicator" id="turn-indicator" aria-live="polite">
+        <span class="turn-dot" id="turn-dot"></span>
+        <span id="current-player">Ready to play</span>
+      </div>
+    </header>
+
+    <div class="game-layout">
+      <section class="board-section" aria-label="Ludo game board">
+        <div class="board-wrap">
+          <div id="board" class="ludo-board" role="grid" aria-label="Ludo board"></div>
+          <div class="base-progress base-progress--red" id="red-base-progress" role="progressbar" aria-label="Red progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="--progress: 0%"><span class="base-progress-content"><span class="base-progress-name">RED</span><strong id="red-progress">0%</strong></span></div>
+          <div class="base-progress base-progress--green" id="green-base-progress" role="progressbar" aria-label="Green progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="--progress: 0%"><span class="base-progress-content"><span class="base-progress-name">GREEN</span><strong id="green-progress">0%</strong></span></div>
+          <div class="base-progress base-progress--yellow" id="yellow-base-progress" role="progressbar" aria-label="Yellow progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="--progress: 0%"><span class="base-progress-content"><span class="base-progress-name">YELLOW</span><strong id="yellow-progress">0%</strong></span></div>
+          <div class="base-progress base-progress--blue" id="blue-base-progress" role="progressbar" aria-label="Blue progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="--progress: 0%"><span class="base-progress-content"><span class="base-progress-name">BLUE</span><strong id="blue-progress">0%</strong></span></div>
+          <div class="base-reaction base-reaction--red" id="red-reaction" role="status" aria-live="polite" hidden></div>
+          <div class="base-reaction base-reaction--green" id="green-reaction" role="status" aria-live="polite" hidden></div>
+          <div class="base-reaction base-reaction--yellow" id="yellow-reaction" role="status" aria-live="polite" hidden></div>
+          <div class="base-reaction base-reaction--blue" id="blue-reaction" role="status" aria-live="polite" hidden></div>
+          <button id="dice-result" class="dice-result" type="button" aria-live="polite" aria-label="Tap the die to roll" title="Tap to roll the die">
+            <span id="die-cube" class="die-cube" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="board-legend" aria-label="Board key">
+          <span><i class="legend-safe"></i> Safe square</span>
+          <span><i class="legend-home"></i> Home lane</span>
+        </div>
+      </section>
+
+      <aside class="control-panel" aria-label="Game controls">
+        <div class="game-state">
+          <div class="game-state-heading">
+            <p class="panel-label">GAME STATUS</p>
+            <button id="sound-toggle" class="sound-toggle" type="button" aria-label="Mute all game sounds" aria-pressed="true">Sound: On</button>
+          </div>
+          <p id="game-message" class="game-message" aria-live="polite">Start a game to begin.</p>
+          <p id="event-indicator" class="event-indicator" aria-live="polite" aria-atomic="true"></p>
+        </div>
+
+        <div class="button-row">
+          <button id="start-button" class="button button-start" type="button">Start Game</button>
+          <button id="restart-button" class="button button-restart" type="button" disabled>Restart Game</button>
+        </div>
+
+        <div class="player-list" aria-label="Players">
+          <p class="panel-label">PLAYERS</p>
+          <div class="player-row" data-player="red"><span class="player-swatch"></span><span class="player-name">Red</span><button class="player-reaction-trigger" type="button" data-reaction-player="red" aria-label="Open Red reaction menu" aria-expanded="false">😀</button><span class="player-meter"><span class="player-count" id="red-count">0 / 4 home</span></span></div>
+          <div class="player-row" data-player="green"><span class="player-swatch"></span><span class="player-name">Green</span><button class="player-reaction-trigger" type="button" data-reaction-player="green" aria-label="Open Green reaction menu" aria-expanded="false">😀</button><span class="player-meter"><span class="player-count" id="green-count">0 / 4 home</span></span></div>
+          <div class="player-row" data-player="yellow"><span class="player-swatch"></span><span class="player-name">Yellow</span><button class="player-reaction-trigger" type="button" data-reaction-player="yellow" aria-label="Open Yellow reaction menu" aria-expanded="false">😀</button><span class="player-meter"><span class="player-count" id="yellow-count">0 / 4 home</span></span></div>
+          <div class="player-row" data-player="blue"><span class="player-swatch"></span><span class="player-name">Blue</span><button class="player-reaction-trigger" type="button" data-reaction-player="blue" aria-label="Open Blue reaction menu" aria-expanded="false">😀</button><span class="player-meter"><span class="player-count" id="blue-count">0 / 4 home</span></span></div>
+        </div>
+
+        <p class="rule-note">Roll a 6 to leave base. Reach the center with an exact roll. Safe squares protect every token.</p>
+      </aside>
+    </div>
+    <footer class="footer-note">LOCAL PASS-AND-PLAY <span>·</span> NO ACCOUNT OR DATABASE REQUIRED</footer>
+  </main>
+</body>
+</html>
